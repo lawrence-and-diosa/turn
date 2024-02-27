@@ -6,17 +6,39 @@
 <body background='res/table.png'>
 
 
+
+
+
+
+
+
 <script>
 bgm=new Audio('res/bg.mp3');
-//bgm.muted=true;
-//bgm.autoplay=true;
-//bgm.playit=function(){bgm.play();}
 bgm.display='none';
-
-
+bgm.loop=true;
+bgm.sw=0;
 document.addEventListener('pointerdown',function(){
+if(bgm.sw==0){
+bgm.volume=.25;
 bgm.play();
+bgm.sw=1;
+}
 });
+
+
+EE=document.createElement('div');
+setTimeout(function(){
+document.body.appendChild(EE);
+});
+EE.style.zIndex=9999;
+pv=new Image();
+pv.src='res/help.png'
+pv.style='width:35%; height:100%; position:absolute; left:30%; top:0%; z-index=99999;';
+EE.appendChild(pv);
+pv.onclick=function(){
+EE.removeChild(pv);
+}
+
 </script>
 
 
@@ -29,6 +51,28 @@ bgm.play();
 
 
 
+
+<script>
+E=document.createElement('div');//document.body.appendChild(E);
+E.style.zIndex=9999;
+E.view=function(vvv){
+if(vvv){//edit it  if coordinate is on a midell
+vv=new Image();
+vv.src=vvv.src;
+
+E.appendChild(vv);
+vv.style='width:35%; height:100%; position:absolute; left:30%; top:0%;';
+vv.onclick=function(){
+E.removeChild(vv);
+}
+}}
+
+
+
+setTimeout(function(){
+document.body.appendChild(E);
+},100*3);
+</script>
 
 
 
@@ -41,14 +85,52 @@ bgm.play();
 
 <div style="position:absolute;left:250px;margin: 0px auto;">
 <div id="flipbook">
-			<div class='hard' style="background-image:url(pages/1.png);background-repeat: no-repeat;background-attachment: fixed; background-size: 100% 100%;"></div>
-			<div style="background-image:url(pages/2.png);background-repeat: no-repeat;background-attachment: fixed; background-size: 100% 100%;"></div>
-			<div style="background-image:url(pages/3.png);background-repeat: no-repeat;background-attachment: fixed; background-size: 100% 100%;"></div>
-			<div style="background-image:url(pages/4.png);background-repeat: no-repeat;background-attachment: fixed; background-size: 100% 100%;"></div>
-			<div style="background-image:url(pages/5.png);background-repeat: no-repeat;background-attachment: fixed; background-size: 100% 100%;"></div>
-			<div style="background-image:url(pages/6.png);background-repeat: no-repeat;background-attachment: fixed; background-size: 100% 100%;"></div>
-			<div style="background-image:url(pages/7.png);background-repeat: no-repeat;background-attachment: fixed; background-size: 100% 100%;"></div>
-			<div style="background-image:url(pages/8.png);background-repeat: no-repeat;background-attachment: fixed; background-size: 100% 100%;"></div>
+<!--
+<image src='pages/1.png' class='hard' onclick='E.view(this);'>
+
+<image src='pages/0.png' onclick='E.view(this);'>
+<image src='pages/2.png' onclick='E.view(this);'>
+
+<image src='pages/3.png' onclick='E.view(this);'>
+
+<div>
+<iframe src="https://www.google.com/maps/embed?pb=!1m24!1m8!1m3!1d7709.970392878914!2d120.5830036!3d14.9379181!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x33965e8b6a56c083%3A0x8c6fd64f21fd1565!2sSan%20Antonio%20de%20Padua%20Parish%20Church%20-%20San%20Antonio%2C%20Lubao%2C%20Pampanga%20(Archdiocese%20of%20San%20Fernando)%2C%20Purok%201%20San%20Antonio%202005%2C%20Lubao!3m2!1d14.9383863!2d120.57847869999999!4m5!1s0x33965ef16aaaaaab%3A0x666d3b0714da6ed2!2sCVRazon%20Function%20hall!3m2!1d14.9435614!2d120.59765689999999!5e0!3m2!1sen!2sph!4v1709064532342!5m2!1sen!2sph" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
+style="z-index:0; width:90%; height:50%; left:5%; top:23%; position:absolute;"></iframe>
+<image src="pages/0.png" style="z-index:-1; width:100%; height:100%; left:0%; top:23%; position:static;">
+</div>
+
+<image src='pages/4.png' onclick='E.view(this);'>
+
+
+<div>
+<image src="res/iconfb.png" style="width:10%; height:10%; left:0%; top:0%; position:absolute;">
+<a href='https://facebook.com/LNJ.Mariano' style="width:10%; height:10%; left:0%; top:0%; position:absolute;">LNJ Mariano</a>
+<image src="pages/0.png" style="z-index:-1; width:100%; height:100%; left:0%; top:23%; position:static;">
+</div>
+
+<image src='pages/5.png'>
+<image src='pages/6.png'>
+<image src='pages/7.png'>
+<image src='pages/8.png' class='hard' >
+<image src='pages/0.png' class='hard' >
+-->
+
+
+
+<image src='pages/1.png' class='hard'>
+<image src='pages/2.png'>
+<image src='pages/3.png''>
+<image src='pages/4.png''>
+<image src='pages/5.png'>
+<image src='pages/6.png'>
+<image src='pages/7.png'>
+<image src='pages/8.png' class='hard' >
+
+
+
+
+
+
 </div>
 </div>
 <script>
@@ -61,18 +143,13 @@ sfx=new Audio('res/page.mp3');
 		autoCenter: true
 	});
 
-$(".flipbook").bind("turning", function(event, page, view) { 
+$("#flipbook").bind("turning", function(event, page, view) { 
     console.log("Page: "+page);
 sfx.play();
 });
+
+
 </script>
-
-
-
-
-
-
-
 
 
 
