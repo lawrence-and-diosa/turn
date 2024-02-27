@@ -1,0 +1,81 @@
+<!doctype html>
+<head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="turn.min.js"></script>
+</head>
+<body background='res/table.png'>
+
+
+<script>
+bgm=new Audio('res/bg.mp3');
+//bgm.muted=true;
+//bgm.autoplay=true;
+//bgm.playit=function(){bgm.play();}
+bgm.display='none';
+
+
+document.addEventListener('pointerdown',function(){
+bgm.play();
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="position:absolute;left:250px;margin: 0px auto;">
+<div id="flipbook">
+			<div class='hard' style="background-image:url(pages/1.png);background-repeat: no-repeat;background-attachment: fixed; background-size: 100% 100%;"></div>
+			<div style="background-image:url(pages/2.png);background-repeat: no-repeat;background-attachment: fixed; background-size: 100% 100%;"></div>
+			<div style="background-image:url(pages/3.png);background-repeat: no-repeat;background-attachment: fixed; background-size: 100% 100%;"></div>
+			<div style="background-image:url(pages/4.png);background-repeat: no-repeat;background-attachment: fixed; background-size: 100% 100%;"></div>
+			<div style="background-image:url(pages/5.png);background-repeat: no-repeat;background-attachment: fixed; background-size: 100% 100%;"></div>
+			<div style="background-image:url(pages/6.png);background-repeat: no-repeat;background-attachment: fixed; background-size: 100% 100%;"></div>
+			<div style="background-image:url(pages/7.png);background-repeat: no-repeat;background-attachment: fixed; background-size: 100% 100%;"></div>
+			<div style="background-image:url(pages/8.png);background-repeat: no-repeat;background-attachment: fixed; background-size: 100% 100%;"></div>
+</div>
+</div>
+<script>
+sfx=new Audio('res/page.mp3');
+</script>
+<script>
+	$("#flipbook").turn({
+		width: 900,
+		height:600,
+		autoCenter: true
+	});
+
+$(".flipbook").bind("turning", function(event, page, view) { 
+    console.log("Page: "+page);
+sfx.play();
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
